@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+require File.expand_path(File.join(File.dirname(__FILE__), "../boot"))
+
+require 'guard'
+require 'guard/cli'
+require 'guard/spork/spork_instance'
+module Guard
+  class Spork
+    class SporkInstance
+      def command
+        parts = []
+        parts << "bundle exec" if use_bundler?
+        parts << "foreman run" if use_foreman?
+        parts << "./script/spork"
+
+        if type == :test_unit
+          parts << "testunit"
+        elsif type == :cucumber
+          parts << "cu"
+        elsif type == :minitest
+          parts << "minitest"
+        end
+
+        parts << "-p #{port}"
+        parts << "-q" if options[:quiet]
+        parts.join(" ")
+      end
+
+      def self.windows?
+        RUBY_PLATFORM =~ /mswin|msys|mingw/
+      end
+    end
+  end
+end
+
+module Guard
+  class Spork
+    class Runner
+      def detect_rspec
+        false
+      end
+
+      def detect_minitest
+        !!options[:minitest]
+      end
+    end
+  end
+end
+
+
+Guard::CLI.start
