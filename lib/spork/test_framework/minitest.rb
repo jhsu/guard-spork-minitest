@@ -3,7 +3,7 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
   UNIT_HELPER = File.join(Dir.pwd, "test/test_helper.rb")
   SPEC_HELPER = File.join(Dir.pwd, "spec/minitest_helper.rb")
 
-  if defined?(Minitest::Spec) && File.exists?(SPEC_HELPER)
+  if File.exists?(SPEC_HELPER)
     HELPER_FILE = SPEC_HELPER
     TEST_PATH = "spec"
   else

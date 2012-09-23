@@ -36,10 +36,6 @@ end
 module Guard
   class Spork
     class Runner
-      def detect_rspec
-        false
-      end
-
       def detect_minitest
         !!options[:minitest]
       end
