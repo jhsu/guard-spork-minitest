@@ -1,7 +1,7 @@
 class Spork::TestFramework::MiniTest < Spork::TestFramework
   DEFAULT_PORT = 8988
   HELPER_FILES = [ File.join(Dir.pwd, "test/test_helper.rb"),
-                   File.join(Dir.pwd, "spec/spec_helper.rb")]
+                   File.join(Dir.pwd, "spec/minitest_helper.rb")]
   if defined?(Minitest::Spec)
     HELPER_FILE = HELPER_FILES.last
   else

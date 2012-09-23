@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'minitest_helper'
 
 describe "Blank" do
   before do
