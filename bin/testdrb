@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require 'drb'
+
+DRb.start_service
+exit_code = DRbObject.new_with_uri("druby://127.0.0.1:8988").run(ARGV, $stderr, $stdout)
+
+exit(exit_code || false)
