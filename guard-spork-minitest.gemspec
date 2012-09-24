@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'guard-spork-minitest'
   s.version     = '0.0.1'
-  s.authors     = ['Joseph Hsu']
-  s.email       = ['jhsu.x1@gmail.com']
+  s.authors     = ['Joseph Hsu', 'Rob Jones']
+  s.email       = ['jhsu.x1@gmail.com', 'jonesdeini.spam@gmail.com']
   s.homepage    = 'http://github.com/jhsu/guard-spork-minitest'
   s.summary     = 'Crossbreed guard, spork and minitest.'
   s.description = 'Integrate guard spork and minitest into working properly.'
