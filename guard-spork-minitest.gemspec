@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.8.0'
 
   s.add_dependency 'spork', '~> 0.9.2'
-  s.add_dependency 'guard', '~> 1.3.3'
+  s.add_dependency 'guard', '~> 1.4.0'
   s.add_dependency 'minitest', '~> 3.3'
 
   s.add_dependency 'guard-minitest', '~> 0.5'
