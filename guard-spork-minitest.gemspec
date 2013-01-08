@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = '>= 1.9.3'
   s.required_rubygems_version = '>= 1.8.0'
 
-  s.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
 
   s.add_dependency 'spork', '~> 0.9.2'
   s.add_dependency 'guard', '~> 1.4.0'
