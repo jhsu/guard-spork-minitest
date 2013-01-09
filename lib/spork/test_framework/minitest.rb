@@ -1,16 +1,9 @@
 class Spork::TestFramework::MiniTest < Spork::TestFramework
   DEFAULT_PORT = 8988
-  UNIT_HELPER = File.join(Dir.pwd, "test/minitest_helper.rb")
-  SPEC_HELPER = File.join(Dir.pwd, "spec/minitest_helper.rb")
-
-  if File.exists?(SPEC_HELPER)
-    HELPER_FILE = SPEC_HELPER
-    TEST_PATH = "spec"
-  else
-    HELPER_FILE = UNIT_HELPER
-    TEST_PATH = "test"
-  end
-  # HELPER_FILE = HELPER_FILES.detect {|f| File.exists?(f) }
+  TEST_PATH = ["test", "spec"].detect {|dir| File.exists?(File.join(Dir.pwd, dir)) }
+  HELPER_FILE = ["minitest_helper.rb", "test_helper.rb", "spec_helper.rb"].detect {|file|
+    File.exists?(File.join(Dir.pwd, TEST_PATH, file))
+  }
 
   def run_tests(argv, stderr, stdout)
     ::MiniTest::Unit.output = stdout
@@ -26,10 +19,9 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
   end
 
   def parse_options(argv)
-    test_path = File.dirname(HELPER_FILE).split("/").last
     paths = argv.select {|arg|
       # break if arg =~ /^--/
-      arg =~ /(^|\.\/)#{test_path}\//
+      arg =~ /(^|\.\/)#{TEST_PATH}\//
     }
     opts = handle_flags(argv)
 
