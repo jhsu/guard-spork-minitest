@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-require File.expand_path(File.join(File.dirname(__FILE__), "../boot"))
 
-require 'spork/runner'
-require 'spork/test_framework/minitest'
+# Spork looks at the gems installed either using bundler or Gem for files in
+# space of "spork/test_framework/*"
+require 'spork'
 
 begin
   success = Spork::Runner.run(ARGV, STDOUT, STDERR)
