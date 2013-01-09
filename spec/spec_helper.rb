@@ -6,4 +6,4 @@ Spork.each_run do
 end
 
 require 'minitest/autorun'
-require 'minitest/unit'
+require 'minitest/spec'
